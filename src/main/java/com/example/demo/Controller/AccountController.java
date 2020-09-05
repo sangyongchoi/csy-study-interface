@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 public class AccountController {
     private final AccountService accountService;
@@ -23,8 +24,8 @@ public class AccountController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity login(String userId, String password){
-        HttpStatus resultHttpStatus = accountService.login(userId, password);
+    public ResponseEntity login(String userId, String password, String type){
+        HttpStatus resultHttpStatus = accountService.login(userId, password, type);
 
         return ResponseEntity.status(resultHttpStatus)
                 .build();

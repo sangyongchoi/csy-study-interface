@@ -17,6 +17,7 @@ class AccountControllerTest {
     AccountService accountService;
     @Autowired
     AccountRepository accountRepository;
+
     @Test
     void account() throws Exception {
         Account account = Account.builder()
