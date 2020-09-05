@@ -1,5 +1,6 @@
 package com.example.demo.Controller;
 
+import com.example.demo.Domain.Account;
 import com.example.demo.Service.AccountService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +15,17 @@ public class AccountController {
         this.accountService = accountService;
     }
 
+    @PostMapping
+    public ResponseEntity account(Account account){
+        HttpStatus resultHttpStatus = accountService.account(account);
+        return ResponseEntity.status(resultHttpStatus)
+                .build();
+    }
+
     @PostMapping("/login")
     public ResponseEntity login(String userId, String password){
         HttpStatus resultHttpStatus = accountService.login(userId, password);
-        
+
         return ResponseEntity.status(resultHttpStatus)
                 .build();
     }

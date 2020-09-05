@@ -15,6 +15,15 @@ public class AccountService {
         this.accountRepository = accountRepository;
     }
 
+    public HttpStatus account(Account account){
+        try {
+            accountRepository.save(account);
+            return HttpStatus.OK;
+        }catch (Exception e){
+            throw e;
+        }
+    }
+
     public HttpStatus login(String userId, String password) {
         Account user = accountRepository.findByUserId(userId).orElseThrow(() -> new CoreExceptionONE(ErrorCode.ERROR_ONE));
         if (password.equals(user.getPassword())) {
